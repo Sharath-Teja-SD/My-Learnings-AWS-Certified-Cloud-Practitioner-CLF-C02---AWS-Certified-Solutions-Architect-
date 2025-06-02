@@ -1,5 +1,5 @@
-# My-Learnings
-EC2 Technical gufthugu
+# My-Learnings AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Solutions Architect – Associate (SAA-C03)
+EC2 Technical gufthugu 
 {TG}
 EC2-ELASTIC COMPUTE CLOUD
 Amazon Elastic Compute Cloud (Amazon EC2) provides on-demand, scalable computing capacity in the Amazon Web Services (AWS) Cloud. 
