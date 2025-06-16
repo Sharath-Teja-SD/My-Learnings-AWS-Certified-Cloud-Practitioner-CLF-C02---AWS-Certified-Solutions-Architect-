@@ -1,199 +1,172 @@
-# My-Learnings AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Solutions Architect – Associate (SAA-C03)
-EC2 Technical gufthugu 
-{TG}
-EC2-ELASTIC COMPUTE CLOUD
-Amazon Elastic Compute Cloud (Amazon EC2) provides on-demand, scalable computing capacity in the Amazon Web Services (AWS) Cloud. 
-It Allows you to Rent Virtual servers, known as instances, to run applications and Services.
-Using Amazon EC2 reduces hardware costs so you can develop and deploy applications faster. 
-You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking, and manage storage. 
-Amazon EC2 enables you to Scale up or Scale down the instances.
-Amazon EC2 having two storage opts i.e 
-1. EBS & 
-2. Instances Storage.
-PRE Configure templates are avalible known as Amazon Machine Image.
-By default, When you Create an EC2 account with amazon, your amazon is linked to a maximum of 20 instances per EC2 Region with two default high I/O instances
-This limit applies only to running instances. Stopped, hibernated, or pending instances do not count against this limit.
+# 📘 My Learnings: AWS EC2 – Elastic Compute Cloud
 
-{U}
-EC2 = Elastic Compute Cloud = Infrastructure as a Service
-• It mainly consists in the capability of:
-• Renting virtual machines (EC2)
-• Storing data on virtual drives (EBS)
-• Distributing load across machines (ELB)
-• Scaling the services using an auto-scaling group (ASG)
+**Certifications Covered:**
+- AWS Certified Cloud Practitioner (CLF-C02)
+- AWS Certified Solutions Architect – Associate (SAA-C03)
 
-{U}
-EC2 sizing & configuration options
-• Operating System (OS): Linux, Windows or Mac OS
-• How much compute power & cores (CPU)
-• How much random-access memory (RAM)
-• How much storage space:
-• Network-attached (EBS & EFS)
-• hardware (EC2 Instance Store)
-• Network card: speed of the card, Public IP address
-• Firewall rules: security group
-• Bootstrap script (configure at first launch): EC2 User Data
+---
 
-{U}
-EC2 User Data
-• It is possible to bootstrap our instances using an EC2 User data script.
-• bootstrapping means launching commands when a machine starts
-• That script is only run once at the instance first start
-• EC2 user data is used to automate boot tasks such as:
-• Installing updates 
-• Installing software
-• Downloading common files from the internet
-• Anything you can think of
-• The EC2 User Data Script runs with the root user
+## ☁️ EC2 - Elastic Compute Cloud
 
-{U} 
-EC2 Instance Types - Overview
-• You can use different types of EC2 instances that are optimised for different use cases (https://aws.amazon.com/ec2/instance-types/)
-• AWS has the following naming convention
-m5.2xlarge
-• m: instance class
-• 5: generation (AWS improves them over time)
-• 2xlarge: size within the instance class
+Amazon Elastic Compute Cloud (Amazon EC2) provides on-demand, scalable computing capacity in the AWS Cloud.  
+It allows you to **rent virtual servers (instances)** to run applications and services.
 
-{TG}
-Types of EC2 Instances:
-General Purpose --- Balanced Memory & CPU
-Compute Optimized ---More CPU than RAM
-Memory Optimized ---- More CPU
-Accelerated Computing /GPU -----Graphics Optimized
-Storage Optimized --- Low latency
-High Memory Optimized ----High RAM, Nitro System(uses spl type of Hypervisor)
-__________________________________________________________________________________
-Amazon EC2 provides a wide selection of instance types optimized to fit different use cases. Instance types comprise varying combinations of CPU, memory, storage, and networking capacity and give you the flexibility to choose the appropriate mix of resources for your applications. Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload.
+### 🔹 Key Benefits:
+- Reduces hardware costs
+- Launch as many/few instances as needed
+- Configure security, networking, storage
+- Easily scale up/down
+- Pre-configured templates: **Amazon Machine Images (AMI)**
+- Default limit: **20 running instances per EC2 Region** (excluding stopped, hibernated, or pending)
 
-Here's a comprehensive overview of AWS EC2 instance types, including definitions, suitable use cases, configuration ranges (vCPU, RAM, storage), and other pertinent details, arranged by instance family.
+---
 
-### 1. *General Purpose Instances*
-#### Definitions:
-General Purpose instances provide a balance of compute, memory, and networking resources. They can be used for a variety of workloads.
+## 🏗️ EC2 = Infrastructure as a Service (IaaS)
 
-#### Series:
-- *T4g, T3, T3a, T2:* Burstable performance instances with a baseline level of CPU performance.
-- *M7g, M6g, M6i, M5, M5a, M5n, M4:* Balance of compute, memory, and networking resources.
+Main capabilities:
+- Renting virtual machines (EC2)
+- Storing data (EBS)
+- Load balancing (ELB)
+- Auto-scaling (ASG)
 
-#### Use Cases:
-- Web servers
-- Application servers
-- Small to medium databases
-- Development and test environments
+---
 
-Configuration Range:
-- *vCPUs:* Up to 96 vCPUs
-- *RAM:* Up to 384 GiB
-- *Storage:* EBS-optimized (EBS-only)
+## ⚙️ EC2 Configuration Options
 
-### 2. *Compute Optimized Instances*
-#### Definitions:
-Compute Optimized instances are ideal for compute-bound applications that benefit from high-performance processors.
+- Operating System (Linux, Windows, Mac)
+- CPU: Compute power & cores
+- RAM: Memory capacity
+- Storage:
+  - Network-attached (EBS, EFS)
+  - Local (Instance Store)
+- Network card: Speed, Public IP
+- Security: Security Groups (Firewall Rules)
+- **Bootstrap Script:** EC2 User Data
 
-#### Series:
-- *C7g, C6g, C6i, C6a, C5, C5a, C5n, C4*
+---
 
-#### Use Cases:
-- High-performance web servers
-- Scientific modeling
-- Batch processing
-- Machine learning inference
+## 📜 EC2 User Data
 
-#### Configuration Range:
-- *vCPUs:* Up to 128 vCPUs
-- *RAM:* Up to 256 GiB
-- *Storage:* EBS-optimized (EBS-only)
+- Automates tasks on first launch (bootstrapping)
+- Runs as **root** user
+- Example tasks:
+  - Install updates
+  - Install software
+  - Download files
 
-### 3. *Memory Optimized Instances*
-#### Definitions:
-Memory Optimized instances are designed to deliver fast performance for workloads that process large data sets in memory.
+---
 
-#### Series:
-- *R7g, R6g, R6i, R6a, R5, R5a, R5n, R4*
-- *X2idn, X2iedn, X1, X1e:* High memory instances for large-scale, memory-intensive applications.
-- *u-6tb1.metal, u-9tb1.metal, u-12tb1.metal:* High memory bare metal instances for SAP HANA and other memory-intensive applications.
+## 🧱 EC2 Instance Types - Overview
 
-#### Use Cases:
-- High-performance databases
-- In-memory caches
-- Real-time big data analytics
+AWS provides different instance types optimized for specific workloads.  
+**Naming Convention Example:** `m5.2xlarge`
+- `m`: Instance class
+- `5`: Generation
+- `2xlarge`: Size
 
-#### Configuration Range:
-- *vCPUs:* Up to 128 vCPUs
-- *RAM:* Up to 24 TiB
-- *Storage:* EBS-optimized (EBS-only)
+---
 
-### 4. *Accelerated Computing Instances*
-#### Definitions:
-Accelerated Computing instances use hardware accelerators, or co-processors, to perform functions such as floating-point number calculations, graphics processing, or data pattern matching.
+## 📊 EC2 Instance Families
 
-#### Series:
-- *P4d, P3, P2:* Instances with GPUs for general-purpose GPU computing.
-- *Inf1:* Instances for machine learning inference.
-- *G5, G4ad, G4dn, G3:* Graphics-intensive workloads.
+### 1. General Purpose
+**Balanced Compute, Memory, Networking**
 
-#### Use Cases:
-- Machine learning training and inference
-- Computational fluid dynamics
-- Molecular modeling
-- Rendering and transcoding video
+| Series | Description |
+|--------|-------------|
+| T4g, T3, T3a, T2 | Burstable performance |
+| M7g, M6g, M5, M5a, M5n, M4 | Balanced for general workloads |
 
-#### Configuration Range:
-- *vCPUs:* Up to 96 vCPUs
-- *RAM:* Up to 1.1 TiB
-- *Storage:* EBS-optimized (EBS-only), local NVMe SSDs available on certain instances
+**Use Cases:** Web servers, app servers, small DBs, dev/test  
+**Config Range:** Up to 96 vCPUs, 384 GiB RAM, EBS only
 
-### 5. *Storage Optimized Instances*
-#### Definitions:
-Storage Optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage.
+---
 
-#### Series:
-- *I4i, I3en, I3:* High I/O instances.
-- *D3, D2:* Dense storage instances.
-- *H1:* Instances for high disk throughput.
+### 2. Compute Optimized
+**More CPU than RAM**
 
-#### Use Cases:
-- NoSQL databases (e.g., Cassandra, MongoDB)
-- Data warehousing
-- Distributed file systems
+| Series | Description |
+|--------|-------------|
+| C7g, C6g, C6i, C6a, C5, C5a, C5n, C4 | High-performance CPUs |
 
-#### Configuration Range:
-- *vCPUs:* Up to 96 vCPUs
-- *RAM:* Up to 1.5 TiB
-- *Storage:* Up to 60 TB of NVMe SSD or HDD
+**Use Cases:** High-perf web servers, ML inference, scientific modeling  
+**Config Range:** Up to 128 vCPUs, 256 GiB RAM, EBS only
 
-### Additional Information:
-- *EBS-Optimized:* All instances are EBS-optimized by default, providing dedicated throughput to EBS volumes.
-- *Networking:* Enhanced networking with up to 100 Gbps throughput on certain instances.
-- *Bare Metal:* Available for certain instance types, providing direct access to hardware for workloads that require non-virtualized environments.
+---
 
-### Summary
-This summary provides a high-level overview of the different types of AWS EC2 instances, along with their series, use cases, and configuration ranges. This is essential knowledge for AWS certification and helps in choosing the right instance type for specific workloads.
+### 3. Memory Optimized
+**More RAM for in-memory data processing**
 
-General Purpose Instances:
-General Purpose instances Provide a Balance of Compute , Memory and Networking Resources , and can be used for a Variety of workloads
-Instances Available in four sizes – Nano,Small, Medium, Large
-A series
-(A1-Instances)
-A1- instances are ideally suited for scale-out workloads that are supported by the ARM Ecosystem
-M series
-T  series 
+| Series | Description |
+|--------|-------------|
+| R7g, R6g, R6i, R5, R5a, R4 | High memory |
+| X2idn, X1e, u-6tb1.metal | SAP HANA & memory-heavy apps |
 
+**Use Cases:** High-perf DBs, real-time analytics, caches  
+**Config Range:** Up to 128 vCPUs, 24 TiB RAM, EBS only
 
+---
 
+### 4. Accelerated Computing
+**For GPU, ML, HPC workloads**
 
-__________________________________________________________________________________
-{CG}
-When to Use Each Instance Type:
-•	General Purpose: Suitable for a wide range of workloads where the balance of compute, memory, and networking is important but not specialized.
-•	Compute Optimized: Ideal for compute-intensive applications that require high-performance processors.
-•	Memory Optimized: Best for memory-intensive applications that require high RAM capacity and fast memory performance.
-•	Storage Optimized: Designed for applications that require high I/O performance and large amounts of local storage.
-•	Accelerated Computing: Used for applications that benefit from GPU or FPGA acceleration, such as machine learning, gaming, and video rendering.
-•	FPGA Instances: Specifically for applications that require hardware acceleration using Field Programmable Gate Arrays (FPGAs).
+| Series | Description |
+|--------|-------------|
+| P4d, P3, P2 | GPU computing |
+| Inf1 | ML inference |
+| G5, G4dn, G3 | Graphics-intensive apps |
 
-{G}
- 
+**Use Cases:** ML training/inference, CFD, rendering  
+**Config Range:** Up to 96 vCPUs, 1.1 TiB RAM, EBS + NVMe
 
+---
+
+### 5. Storage Optimized
+**For high I/O and local storage needs**
+
+| Series | Description |
+|--------|-------------|
+| I4i, I3en, I3 | High IOPS |
+| D3, D2 | Dense HDD |
+| H1 | High throughput disk |
+
+**Use Cases:** NoSQL DBs, DW, distributed storage  
+**Config Range:** Up to 96 vCPUs, 1.5 TiB RAM, up to 60 TB storage
+
+---
+
+## 📌 Additional Notes
+
+- **EBS-Optimized:** All instances are EBS-optimized by default
+- **Networking:** Up to 100 Gbps enhanced networking
+- **Bare Metal:** Direct hardware access for some instance types
+
+---
+
+## 🧭 When to Use Each Instance Type
+
+| Instance Type        | Use Case |
+|----------------------|----------|
+| General Purpose      | Balanced workload needs |
+| Compute Optimized    | High-performance CPU tasks |
+| Memory Optimized     | In-memory DBs, caching |
+| Storage Optimized    | High IOPS, large local storage |
+| Accelerated Computing| GPU, ML, video rendering |
+| FPGA                 | Hardware acceleration apps |
+
+---
+
+## 🧠 Quick Recap
+
+- EC2 = Elastic Compute in AWS Cloud
+- Offers scalable, on-demand compute power
+- Choose instance types based on workload needs
+- Automate with EC2 User Data
+- Understand instance types to pass AWS certifications and make better infra decisions
+
+---
+
+## 🔗 Resources
+
+- [EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)
+- [AWS EC2 Documentation](https://docs.aws.amazon.com/ec2)
 
